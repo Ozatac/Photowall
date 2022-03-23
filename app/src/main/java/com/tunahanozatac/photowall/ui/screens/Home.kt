@@ -1,53 +1,93 @@
 package com.tunahanozatac.photowall.ui.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
-import com.tunahanozatac.photowall.R
+import com.tunahanozatac.photowall.data.model.random.RandomModel
 import com.tunahanozatac.photowall.data.network.viewmodel.RandomViewModel
+import com.tunahanozatac.photowall.util.Constants.API_KEY
 import kotlinx.coroutines.delay
 
 @Composable
-@Preview
-fun HomeScreenPreview() {
-    HomeScreen()
-}
+fun HomeScreen(
+    navController: NavController,
+    viewModel: RandomViewModel = hiltViewModel()
+) {
+    LaunchedEffect(key1 = "getData") {
+        viewModel.loadRandomPhoto(API_KEY)
+    }
 
-@Composable
-fun HomeScreen(viewModel: RandomViewModel = hiltViewModel()) {
-    val cryptoList by remember { viewModel.cryptoList }
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White),
-        contentAlignment = Alignment.Center
+    Surface(
+        color = MaterialTheme.colors.secondary,
+        modifier = Modifier.fillMaxSize()
     ) {
-        //viewModel.loadRandomPhoto(API_KEY)
-        SwipeRefreshCompose()
+        Column {
+            CryptoList(navController = navController)
+        }
     }
 }
 
 @Composable
+fun CryptoList(
+    navController: NavController,
+    viewModel: RandomViewModel = hiltViewModel()
+) {
+    val cryptoList by remember { viewModel.cryptoList }
+    val isLoading by remember { viewModel.isLoading }
+
+    CryptoListView(cryptos = cryptoList, navController = navController)
+
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        if (isLoading) {
+            CircularProgressIndicator(color = MaterialTheme.colors.primary)
+        }
+    }
+
+}
+
+@Composable
+fun CryptoListView(cryptos: List<RandomModel>, navController: NavController) {
+    LazyColumn(contentPadding = PaddingValues(5.dp)) {
+        items(cryptos) { crypto ->
+            CryptoRow(navController = navController, crypto = crypto)
+        }
+    }
+}
+
+@Composable
+fun CryptoRow(navController: NavController, crypto: RandomModel) {
+    Box {}
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(color = MaterialTheme.colors.secondary)
+
+    ) {
+        Text(
+            text = crypto.user.first_name,
+            style = MaterialTheme.typography.h4,
+            modifier = Modifier.padding(2.dp),
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colors.primary
+        )
+    }
+}
+
+/*@Composable  //SwipeRefreshCompose compose calismasi deneme
 fun SwipeRefreshCompose() {
     Scaffold(
         modifier = Modifier.fillMaxSize()
@@ -65,53 +105,8 @@ fun SwipeRefreshCompose() {
             onRefresh = { refreshing = true }
         ) {
             LazyColumn {
-                items(count = 10) {
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(100.dp)
-                            .padding(10.dp, 5.dp, 10.dp, 5.dp)
-                            .clip(RoundedCornerShape(10.dp))
-                            .background(Color.White)
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(10.dp)
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                                    contentDescription = "Profile Image",
-                                    contentScale = ContentScale.Crop,
-                                    modifier = Modifier
-                                        .size(60.dp)
-                                        .clip(CircleShape)
-                                )
 
-                                Spacer(modifier = Modifier.padding(5.dp))
-
-                                Column {
-                                    Text(
-                                        text = "Sample Test",
-                                        color = Color.Black,
-                                        fontSize = 16.sp,
-                                        fontWeight = FontWeight.Bold
-                                    )
-
-                                    Spacer(modifier = Modifier.padding(2.dp))
-
-                                    Text(
-                                        text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                                        color = Color.Gray,
-                                        fontSize = 12.sp
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }
-}
+}*/
