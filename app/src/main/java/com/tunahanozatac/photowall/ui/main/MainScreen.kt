@@ -1,5 +1,6 @@
 package com.tunahanozatac.photowall.ui.main
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -15,6 +16,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 
+@ExperimentalFoundationApi
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()

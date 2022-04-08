@@ -1,7 +1,6 @@
 package com.tunahanozatac.photowall.data.network.api
 
 import com.tunahanozatac.photowall.data.model.random.RandomModel
-import com.tunahanozatac.photowall.util.Resource
 import retrofit2.http.GET
 import retrofit2.http.Query
 
