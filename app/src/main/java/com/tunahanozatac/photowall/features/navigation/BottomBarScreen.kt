@@ -1,4 +1,4 @@
-package com.tunahanozatac.photowall.ui.main
+package com.tunahanozatac.photowall.features.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

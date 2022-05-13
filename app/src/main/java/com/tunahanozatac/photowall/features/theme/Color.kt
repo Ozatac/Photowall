@@ -1,4 +1,4 @@
-package com.tunahanozatac.photowall.ui.theme
+package com.tunahanozatac.photowall.features.theme
 
 import androidx.compose.ui.graphics.Color
 

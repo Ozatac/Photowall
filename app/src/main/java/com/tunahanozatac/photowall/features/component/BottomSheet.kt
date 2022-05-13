@@ -1,4 +1,4 @@
-package com.tunahanozatac.photowall.ui.custom
+package com.tunahanozatac.photowall.features.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tunahanozatac.photowall.ui.theme.Purple500
+import com.tunahanozatac.photowall.features.theme.Purple500
 import kotlinx.coroutines.launch
 
 @ExperimentalMaterialApi

@@ -1,13 +1,13 @@
-package com.tunahanozatac.photowall.ui.main
+package com.tunahanozatac.photowall.features.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.tunahanozatac.photowall.ui.screens.home.HomeScreen
-import com.tunahanozatac.photowall.ui.screens.profilee.ProfileScreen
-import com.tunahanozatac.photowall.ui.screens.settings.SettingsScreen
+import com.tunahanozatac.photowall.features.screens.home.HomeScreen
+import com.tunahanozatac.photowall.features.screens.profilee.ProfileScreen
+import com.tunahanozatac.photowall.features.screens.settings.SettingsScreen
 
 @ExperimentalFoundationApi
 @Composable
