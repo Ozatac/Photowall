@@ -1,4 +1,4 @@
-package com.tunahanozatac.photowall.ui.main
+package com.tunahanozatac.photowall.features.navigation
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.RowScope

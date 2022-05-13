@@ -1,7 +1,7 @@
-package com.tunahanozatac.photowall.dependencyinjection
+package com.tunahanozatac.photowall.data.di
 
-import com.tunahanozatac.photowall.data.network.api.UnsplashApi
-import com.tunahanozatac.photowall.data.network.repository.RandomRepository
+import com.tunahanozatac.photowall.data.remote.api.UnsplashApi
+import com.tunahanozatac.photowall.data.repository.RandomRepository
 import com.tunahanozatac.photowall.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides

@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.core.content.ContextCompat
-import com.tunahanozatac.photowall.ui.main.MainScreen
-import com.tunahanozatac.photowall.ui.theme.PhotoWallTheme
+import com.tunahanozatac.photowall.features.navigation.MainScreen
+import com.tunahanozatac.photowall.features.theme.PhotoWallTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @ExperimentalFoundationApi

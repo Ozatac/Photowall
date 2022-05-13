@@ -1,4 +1,4 @@
-package com.tunahanozatac.photowall.ui.screens.profilee
+package com.tunahanozatac.photowall.features.screens.profilee
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
